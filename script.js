@@ -20,12 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
     let isRepeat = false;
 
     fileInput.addEventListener('change', function () {
-        const files = fileInput.files;
+        const files = Array.from(fileInput.files);
         if (files.length > 0) {
-            playlist = Array.from(files);
-            currentTrackIndex = 0;
+            playlist = playlist.concat(files);
             loadPlaylist();
-            loadTrack(currentTrackIndex);
+            if (playlist.length === files.length) {
+                currentTrackIndex = 0;
+                loadTrack(currentTrackIndex);
+            }
         }
     });
 
