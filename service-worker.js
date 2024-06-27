@@ -1,10 +1,17 @@
 const CACHE_NAME = 'calculator-cache-v1';
 const urlsToCache = [
     '/',
+    '/Tx-Calculator/',
     '/index.html',
     '/styles.css',
+    '/Tx-Calculator/styles.css',
+    '/Tx-Calculator/script.js',
     '/script.js',
+    '/Tx-Calculator/index.html',
+    '/Tx-Calculator/manifest.json',
     '/manifest.json',
+    '/Tx-Calculator/icon-192x192.png',
+    '/Tx-Calculator/icon-512x512.png',
     '/icons/icon-192x192.png',
     '/icons/icon-512x512.png'
 ];
