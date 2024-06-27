@@ -1,117 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        #player {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            width: 300px;
-        }
-        #audio {
-            width: 100%;
-            margin: 10px 0;
-        }
-        #controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-        }
-        #controls button {
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
-        }
-        #controls button:hover {
-            background-color: #0056b3;
-        }
-        #playlist {
-            list-style-type: none;
-            padding: 0;
-            margin: 10px 0;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        #playlist li {
-            padding: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #playlist li:hover {
-            background-color: #e0e0e0;
-        }
-        #playlist .active {
-            background-color: #d0d0d0;
-        }
-        #nowPlaying {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        #volumeSpeedControls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .sliderContainer {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-        }
-        .sliderContainer label {
-            margin-right: 10px;
-            min-width: 60px;
-            text-align: left;
-        }
-    </style>
+    <title>Tx Calculator by TADR</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2b2b2b">
 </head>
 <body>
-    <div id="player">
-        <h1>Music Player</h1>
-        <input type="file" id="fileInput" accept="audio/*" multiple>
-        <audio id="audio" controls></audio>
-        <div id="controls">
-            <button id="prevButton">Previous</button>
-            <button id="playPauseButton">Play</button>
-            <button id="nextButton">Next</button>
+    <div class="calculator">
+        <div class="calculator-display">
+            <div class="calculator-recent" id="recent-input">0</div>
+            <div class="calculator-current" id="display">0</div>
         </div>
-        <div id="extraControls">
-            <button id="shuffleButton">Shuffle</button>
-            <button id="repeatButton">Repeat</button>
-        </div>
-        <div id="volumeSpeedControls">
-            <div class="sliderContainer">
-                <label for="volumeSlider">Volume: <span id="volumeLabel">100%</span></label>
-                <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
-            </div>
-            <div class="sliderContainer">
-                <label for="speedSlider">Speed: <span id="speedLabel">100%</span></label>
-                <input type="range" id="speedSlider" min="0.5" max="2" step="0.01" value="1">
-            </div>
-        </div>
-        <div id="nowPlaying">Now Playing: None</div>
-        <ul id="playlist"></ul>
-    </div>
+        <div class="calculator-buttons">
+            <button class="button" data-action="clear">C</button>
+            <button class="button" data-action="delete">⌫</button>
+            <button class="button" data-action="percent">%</button>
+            <button class="button" data-action="divide">÷</button>
 
+            <button class="button">7</button>
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button" data-action="multiply">×</button>
+
+            <button class="button">4</button>
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button" data-action="subtract">-</button>
+
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button" data-action="add">+</button>
+
+            <button class="button">0</button>
+            <button class="button" data-action="decimal">.</button>
+            <button class="button" data-action="calculate">=</button>
+        </div>
+    </div>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('Service Worker registered'))
+                .catch((error) => console.log('Service Worker registration failed:', error));
+        }
+    </script>
 </body>
 </html>
